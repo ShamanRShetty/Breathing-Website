@@ -215,9 +215,12 @@ h1{
 }
 
 .sound-btn:hover, .sound-btn.active{
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.35);
+    color: #333;
+    font-weight: 500;
+    transform: translateY(-1px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .timer-display{
