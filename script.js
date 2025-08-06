@@ -10,6 +10,7 @@ let elapsedBeforePause = 0;
 
 function createParticles() {
   const container = document.querySelector(".bg-particles");
+  container.innerHTML="";
   for (let i = 0; i < 20; i++) {
     const particle = document.createElement("div");
     particle.className = "particle";
@@ -88,9 +89,11 @@ function toggleSound(soundType, event) {
   activeSound = soundType;
   event.target.classList.add("active");
 
-  if (soundType !== "silence") {
-    playAmbientSound(soundType);
+  if (event && event.target) {
+    event.target.classList.add("active");
   }
+  playAmbientSound(soundType);
+  
 }
 
 function playAmbientSound(type) {
@@ -146,6 +149,7 @@ function startBreathing() {
 
   startTimer();
   startBreathingCycle();
+  createParticles();
 }
 
 function stopBreathing() {
@@ -159,6 +163,7 @@ function stopBreathing() {
 
   if (breathingInterval) clearInterval(breathingInterval);
   if (timerInterval) clearInterval(timerInterval);
+  document.querySelector(".bg-particles").innerHTML = "";
 }
 
 function startBreathingCycle() {
@@ -214,7 +219,5 @@ function resetSession(){
     elapsedBeforePause = 0;
 }  
 }
-
-createParticles();
 
 toggleSound('silence');
